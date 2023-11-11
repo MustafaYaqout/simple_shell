@@ -13,7 +13,7 @@ int parseInput(char *input, char **argv) {
     int i = 0;
 
     while (token != NULL) {
-        argv[argc] = strdup(token);
+        argv[argc] = duplicateFunction(token);
         if (argv[argc] == NULL) {
             for (i = 0; i < argc; i++) {
                 free(argv[i]);
@@ -22,10 +22,6 @@ int parseInput(char *input, char **argv) {
         }
         token = strtok(NULL, delim);
         argc++;
-    }
-
-    if (argc > 0) {
-        removeTrailingSpaces(argv[argc - 1]);
     }
 
     argv[argc] = NULL;
