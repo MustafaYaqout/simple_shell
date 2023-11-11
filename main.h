@@ -9,9 +9,12 @@
 #include <sys/stat.h>
 #include <sys/wait.h>
 
+
+
 extern char **environ;
 
 char *duplicateFunction(char *duplicate);
+void removeTrailingSpaces(char *str);
 char *_getenv(const char *path);
 int strlength(const char *string);
 char *_strcpy(char *dest, const char *source);
@@ -26,7 +29,8 @@ char *get_location(char *command);
 int parseInput(char *input, char **argv);
 void handleCommandLineArgs(int argc, char *argv[]);
 void displayPrompt();
-void freeArguments(char **arguments, int argc);
-void handleExit(char **arguments, int argc);
-
+void freeArguments(char **arguments);
+void Exit_Shell(char **arguments);
+void HandleError(const char *message, char **arguments);
+void ExecuteCommand(char **arguments);
 #endif /* MAIN_H */

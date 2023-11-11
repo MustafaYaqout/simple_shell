@@ -1,46 +1,50 @@
 #include "main.h"
 
+/**
+ * main - Entry point of the shell program.
+ *
+ * This function handles user input, command execution, and memory management.
+ *
+ * @argc: Number of command line arguments.
+ * @argv: Array of command line arguments.
+ * @envp: Array of environment variables.
+ *
+ * Return: 0 on successful execution, otherwise appropriate error code.
+ */
+
 int main(int argc, char *argv[], char *envp[]) {
-    char *lineptr = NULL;
-    size_t n = 0;
-    ssize_t nchars_read;
-    char **arguments;
+  char *lineptr = NULL;
+  size_t n = 0;
+  ssize_t nchars_read;
+  char **arguments = NULL;
 
-    (void)argc;
-    (void)argv;
+  (void)argc;
+  (void)argv;
 
-    while (1) {
-        displayPrompt();
-        nchars_read = getline(&lineptr, &n, stdin);
+  while (1) {
+    nchars_read = getline(&lineptr, &n, stdin);
 
-        if (nchars_read == -1) {
-            free(lineptr);
-            return 0;
-        }
-
-        if (nchars_read > 0 && lineptr[nchars_read - 1] == '\n') {
-            lineptr[nchars_read - 1] = '\0';
-        }
-
-        arguments = malloc(sizeof(char *) * (nchars_read + 1));
-        if (arguments == NULL) {
-            perror("Error: Memory allocation failed");
-            exit(EXIT_FAILURE);
-        }
-        parseInput(lineptr, arguments);
-
-        if (arguments[0] != NULL) {
-            if (_strcmp(arguments[0], "exit") == 0) {
-                handleExit(arguments, argc);
-            } else if (_strcmp(arguments[0], "env") == 0) {
-                print_env();
-            } else {
-                execvFunction(arguments[0], arguments);
-            }
-        }
-        freeArguments(arguments, nchars_read);
+    if (nchars_read == -1) {
+      free(lineptr);
+      return (0);
+    }
+    if (nchars_read > 0 && lineptr[nchars_read - 1] == '\n') {
+      lineptr[nchars_read - 1] = '\0';
+    }
+    arguments = malloc((argc + 1) * sizeof(char *));
+    if (arguments == NULL) {
+      HandleError("Error: Memory allocation failed", arguments);
     }
 
-    free(lineptr);
-    return 0;
+    argc = parseInput(lineptr, arguments);
+    if (argc == -1) {
+      HandleError("Error: Memory allocation failed", arguments);
+      free(lineptr);
+    }
+
+    ExecuteCommand(arguments);
+    freeArguments(arguments);
+  }
+  free(lineptr);
+  return (0);
 }
