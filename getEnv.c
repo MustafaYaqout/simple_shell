@@ -14,6 +14,7 @@ char *_getenv(const char *path)
 	{
 		char *key_env = strtok(environ[i], "=");
 		char *value_env = strtok(NULL, "=");
+
 		if (_strcmp(key_env, path) == 0)
 		{
 			return (value_env);

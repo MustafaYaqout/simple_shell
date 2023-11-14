@@ -6,24 +6,28 @@
  * @argv: An array to store the parsed tokens
  * @return: The number of tokens in argv, or -1 if memory allocation fails
  */
-int parseInput(char *input, char **argv) {
-    char *delim = " ";
-    char *token = strtok(input, delim);
-    int argc = 0;
-    int i = 0;
 
-    while (token != NULL) {
-        argv[argc] = duplicateFunction(token);
-        if (argv[argc] == NULL) {
-            for (i = 0; i < argc; i++) {
-                free(argv[i]);
-            }
-            return -1;
-        }
-        token = strtok(NULL, delim);
-        argc++;
-    }
+int parseInput(char *input, char **argv)
+{
+	char *delim = " ";
+	char *token = strtok(input, delim);
+	int argc = 0;
+	int i = 0;
 
-    argv[argc] = NULL;
-    return argc;
+	while (token != NULL)
+	{
+		argv[argc] = duplicateFunction(token);
+		if (argv[argc] == NULL)
+		{
+			for (i = 0; i < argc; i++)
+			{
+				free(argv[i]);
+			}
+			return (-1);
+		}
+		token = strtok(NULL, delim);
+		argc++;
+	}
+	argv[argc] = NULL;
+	return (argc);
 }
