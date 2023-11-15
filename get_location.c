@@ -35,7 +35,8 @@ char *get_location(char *command)
 			{
 				free(path_copy);
 				return (file_path);
-			} else
+			}
+			else
 			{
 				free(file_path);
 				path_token = strtok(NULL, ":");
@@ -46,7 +47,7 @@ char *get_location(char *command)
 		if (stat(command, &buffer) == 0)
 			return (command);
 
-		return (NULL)
+		return (NULL);
 	}
 	return (NULL);
 }
