@@ -7,38 +7,44 @@
  *
  * Return: Array of tokens, or NULL on failure
  */
-char **parse_cmd(char *input) {
-    char **arguments;
-    char *token;
-    int i;
-    int j;
-    int buffsize = BUFSIZE;
 
-    if (input[0] == ' ' && input[strlen(input)] == ' ')
-        exit(0);
-    if (input == NULL)
-        return (NULL);
-    
-    arguments = malloc(sizeof(char *) * buffsize);
-    if (!arguments) {
-        perror("hsh");
-        return (NULL);
-    }
+char **parse_cmd(char *input)
+{
+	char **arguments;
+	char *token;
+	int i;
+	int j;
+	int buffsize = BUFSIZE;
 
-    token = strtok(input, "\n\t\r\a ");
-    for (i = 0; token; i++) {
-        arguments[i] = strdup(token);
-        if (!arguments[i]) {
-            perror("hsh");
-	    for (j = 0; j < i; j++) {
-                free(arguments[j]);
-            }
-            free(arguments);
-            return (NULL);
-        }
-        token = strtok(NULL, "\n\t\r\a ");
-    }
-    arguments[i] = NULL;
+	if (input[0] == ' ' && input[strlen(input)] == ' ')
+		exit(0);
+	if (input == NULL)
+		return (NULL);
 
-    return (arguments);
+	arguments = malloc(sizeof(char *) * buffsize);
+
+	if (!arguments)
+	{
+		perror("hsh");
+		return (NULL);
+	}
+
+	token = strtok(input, "\n\t\r\a ");
+	for (i = 0; token; i++)
+	{
+		arguments[i] = strdup(token);
+		if (!arguments[i])
+		{
+			perror("hsh");
+			for (j = 0; j < i; j++)
+			{
+				free(arguments[j]);
+			}
+			free(arguments);
+			return (NULL);
+		}
+		token = strtok(NULL, "\n\t\r\a ");
+	}
+	arguments[i] = NULL;
+	return (arguments);
 }

@@ -30,7 +30,7 @@ void execvFunction(const char *lineptr, char *const argv[]);
 char *get_location(char *command);
 int parseInput(char *input, char ***argv);
 void handleCommandLineArgs(int argc, char *argv[]);
-void displayPrompt();
+void displayPrompt(void);
 void freeArguments(char **arguments);
 void Exit_Shell(char **arguments);
 void HandleError(const char *message, char **arguments);

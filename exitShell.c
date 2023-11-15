@@ -7,11 +7,15 @@
  *
  * @param status - The exit status code.
  */
-void Exit_Shell(char **arguments) {
-  int exitCode = 0;
-  if (arguments[1] != NULL) {
-    exitCode = atoi(arguments[1]);
-  }
-  freeArguments(arguments);
-  exit(exitCode);
+
+void Exit_Shell(char **arguments)
+{
+	int exitCode = 0;
+
+	if (arguments[1] != NULL)
+	{
+		exitCode = atoi(arguments[1]);
+	}
+	freeArguments(arguments);
+	exit(exitCode);
 }

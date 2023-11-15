@@ -5,14 +5,17 @@
  *
  * @param str: The string to be modified.
  */
-void removeTrailingSpaces(char *str) {
-    int i = strlen(str) - 1;
 
-    /* Move backward to find the first non-space character */
-    while (i >= 0 && str[i] == ' ') {
-        i--;
-    }
+void removeTrailingSpaces(char *str)
+{
+	int i = strlen(str) - 1;
 
-    /* Null-terminate the string at the last non-space character */
-    str[i + 1] = '\0';
+	/* Move backward to find the first non-space character */
+	while (i >= 0 && str[i] == ' ')
+	{
+		i--;
+	}
+
+	/* Null-terminate the string at the last non-space character */
+	str[i + 1] = '\0';
 }
