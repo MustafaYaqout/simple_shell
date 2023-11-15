@@ -1,5 +1,4 @@
 #include "main.h"
-#define BUFSIZE 1024
 
 /**
  * parse_cmd - Parse input into an array of tokens
@@ -16,7 +15,7 @@ char **parse_cmd(char *input)
 	int j;
 	int buffsize = BUFSIZE;
 
-	if (input[0] == ' ' && input[strlen(input)] == ' ')
+	if (input[0] == ' ' && input[strlength(input)] == ' ')
 		exit(0);
 	if (input == NULL)
 		return (NULL);
@@ -32,7 +31,7 @@ char **parse_cmd(char *input)
 	token = strtok(input, "\n\t\r\a ");
 	for (i = 0; token; i++)
 	{
-		arguments[i] = strdup(token);
+		arguments[i] = duplicateFunction(token);
 		if (!arguments[i])
 		{
 			perror("hsh");

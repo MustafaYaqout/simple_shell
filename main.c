@@ -43,25 +43,18 @@ int main(int argc, char *argv[], char *envp[])
 
 		if (arguments == NULL)
 		{
-			/* Handle error */
+
 			free(lineptr);
 			return (1);
-			/* Or another appropriate error code */
 		}
 
 		ExecuteCommand(arguments);
-
-		/* Free memory for individual arguments */
 		for (i = 0; arguments[i] != NULL; i++)
 		{
 			free(arguments[i]);
 		}
-
-		/* Free memory for the arguments array */
 		free(arguments);
 	}
-
-	/* Free memory for the lineptr */
 	free(lineptr);
 	return (0);
 }
