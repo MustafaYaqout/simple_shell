@@ -1,9 +1,13 @@
 #include "main.h"
 
-void displayPrompt(void)
-{
-	write(STDOUT_FILENO, "$ ", 2);
-}
+/**
+ * freeArguments - Frees memory allocated for command arguments.
+ * @arguments: The array of command arguments.
+ *
+ * Frees each argument and the array itself by iterating through the array.
+ *
+ * @arguments: The array of command arguments.
+ */
 
 void freeArguments(char **arguments)
 {

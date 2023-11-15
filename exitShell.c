@@ -2,13 +2,19 @@
 
 /**
  * Exit_Shell - Exits the program with a specified status code.
- * @arguments: Array of command arguments.
+ * @arguments: The array of command arguments.
  *
- * Terminates the program immediately, converting the second argument
- * (if present) to an integer using atoi as the exit code. Frees memory
- * allocated for the arguments and exits the program with the exit code.
+ * This function terminates the program immediately.
+ * It checks if there is a
+ * second argument in the array,
+ * representing the exit status code. If present,
+ * it converts the argument to an integer using atoi
+ * and sets it as the exit code.
+ * Then, it frees the memory allocated
+ * for the arguments and exits the program
+ * with the determined exit code.
  *
- * @param arguments: Array of command arguments.
+ * @arguments: The array of command arguments.
  */
 
 void Exit_Shell(char **arguments)
