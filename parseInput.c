@@ -1,33 +1,44 @@
 #include "main.h"
+#define BUFSIZE 1024
 
 /**
- * parseInput - Parse input into an array of tokens
+ * parse_cmd - Parse input into an array of tokens
  * @input: The input string to parse
- * @argv: An array to store the parsed tokens
- * @return: The number of tokens in argv, or -1 if memory allocation fails
+ *
+ * Return: Array of tokens, or NULL on failure
  */
+char **parse_cmd(char *input) {
+    char **arguments;
+    char *token;
+    int i;
+    int j;
+    int buffsize = BUFSIZE;
 
-int parseInput(char *input, char **argv)
-{
-	char *delim = " ";
-	char *token = strtok(input, delim);
-	int argc = 0;
-	int i = 0;
+    if (input[0] == ' ' && input[strlen(input)] == ' ')
+        exit(0);
+    if (input == NULL)
+        return (NULL);
+    
+    arguments = malloc(sizeof(char *) * buffsize);
+    if (!arguments) {
+        perror("hsh");
+        return (NULL);
+    }
 
-	while (token != NULL)
-	{
-		argv[argc] = duplicateFunction(token);
-		if (argv[argc] == NULL)
-		{
-			for (i = 0; i < argc; i++)
-			{
-				free(argv[i]);
-			}
-			return (-1);
-		}
-		token = strtok(NULL, delim);
-		argc++;
-	}
-	argv[argc] = NULL;
-	return (argc);
+    token = strtok(input, "\n\t\r\a ");
+    for (i = 0; token; i++) {
+        arguments[i] = strdup(token);
+        if (!arguments[i]) {
+            perror("hsh");
+	    for (j = 0; j < i; j++) {
+                free(arguments[j]);
+            }
+            free(arguments);
+            return (NULL);
+        }
+        token = strtok(NULL, "\n\t\r\a ");
+    }
+    arguments[i] = NULL;
+
+    return (arguments);
 }
