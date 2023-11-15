@@ -1,8 +1,19 @@
 #include "main.h"
-#include <stdio.h>
-#include <string.h>
-#include <sys/wait.h>
-#include <unistd.h>
+
+
+/**
+ * execvFunction - Execute a command using execve.
+ * @lineptr: The path to the command or the command name.
+ * @argv: An array of strings representing the command and its arguments.
+ *
+ * This function forks a new process, and in the child process, it attempts
+ * to execute the command specified by @lineptr using the execve system call.
+ * If execve fails, it attempts to find the actual location of the command
+ * using the get_location function and retries the execve call.
+ *
+ * @lineptr: The path to the command or the command name.
+ * @argv: An array of strings representing the command and its arguments.
+ */
 
 void execvFunction(const char *lineptr, char *const argv[])
 {

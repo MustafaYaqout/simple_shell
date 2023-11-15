@@ -1,9 +1,15 @@
 #include "main.h"
 
-/*
- * i_atoi function insert two integer
- * return true while *s is imputy
- * else Return flase
+/**
+ * i_atoi - Convert a string to an integer.
+ * @s: The input string to convert.
+ *
+ * This function converts a string to an integer. It skips leading whitespace,
+ * handles an optional sign (+/-), and then processes the numeric characters.
+ * If the string is empty or contains non-numeric characters, the behavior is
+ * undefined.
+ *
+ * Return: The converted integer.
  */
 
 int i_atoi(char *s)
