@@ -10,11 +10,11 @@
 
 void Exit_Shell(char **arguments)
 {
-	int exitCode = 2;
+	int exitCode = 0;
 
 	if (arguments[1] != NULL)
 	{
-		exitCode = i_atoi(arguments[1]);
+		exitCode = atoi(arguments[1]);
 	}
 	freeArguments(arguments);
 	exit(exitCode);
