@@ -1,5 +1,11 @@
 #include "main.h"
 
+/*
+ * i_atoi function insert two integer
+ * return true while *s is imputy
+ * else Return flase
+ */
+
 int i_atoi(char *s)
 {
 	int result = 0;

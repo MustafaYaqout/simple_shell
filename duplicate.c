@@ -16,7 +16,7 @@ char *duplicateFunction(char *duplicate)
 	{
 		return (NULL);
 	}
-	`length = strlength(duplicate);
+	length = strlength(duplicate);
 	if (length == 0)
 	{
 		return (NULL);

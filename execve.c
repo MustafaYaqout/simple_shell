@@ -2,7 +2,7 @@
 
 void execvFunction(const char *lineptr, char *const argv[])
 {
-	pid_t pid = fork()\n;
+	pid_t pid = fork();
 
 	if (pid < 0)
 	{
