@@ -23,7 +23,7 @@ void Exit_Shell(char **arguments)
 
 	if (arguments[1] != NULL)
 	{
-		exitCode = _atoi(arguments[1]);
+		exitCode = i_atoi(arguments[1]);
 	}
 	freeArguments(arguments);
 	exit(exitCode);
