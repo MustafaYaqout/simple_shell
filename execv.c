@@ -26,16 +26,17 @@ void execvFunction(const char *lineptr, char *const argv[])
 	} else if (pid == 0)
 	{
 		if (execve(lineptr, argv, NULL) == -1)
-				{
-					char *actual_command = get_location(argv[0]);
+		{
+			char *actual_command = get_location(argv[0]);
 
-					if (actual_command != NULL)
-					{
-						if (execve(actual_command, argv, NULL) == -1)
-						{
-							exit(EXIT_FAILURE);
-						}
-					} else
+			if (actual_command != NULL)
+			{
+				if (execve(actual_command, argv, NULL) == -1)
+				{
+				exit(EXIT_FAILURE);
+				}
+					}
+				else
 					{
 						perror("error");
 						exit(EXIT_FAILURE);
