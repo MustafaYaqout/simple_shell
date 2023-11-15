@@ -10,7 +10,7 @@
 
 void Exit_Shell(char **arguments)
 {
-	int exitCode = 0;
+	int exitCode = 2;
 
 	if (arguments[1] != NULL)
 	{
