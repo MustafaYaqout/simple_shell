@@ -15,8 +15,6 @@
 int main(int argc, char *argv[], char *envp[])
 {
 	char *lineptr = NULL;
-	size_t n = 0;
-	ssize_t nchars_read;
 	char **arguments = NULL;
 	int i;
 
@@ -26,19 +24,7 @@ int main(int argc, char *argv[], char *envp[])
 
 	while (1)
 	{
-		nchars_read = getline(&lineptr, &n, stdin);
-
-		if (nchars_read == -1)
-		{
-			free(lineptr);
-			return (0);
-		}
-
-		if (nchars_read > 0 && lineptr[nchars_read - 1] == '\n')
-		{
-			lineptr[nchars_read - 1] = '\0';
-		}
-
+		lineptr = readUserInput();
 		arguments = parse_cmd(lineptr);
 
 		if (arguments == NULL)

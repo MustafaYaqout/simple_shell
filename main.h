@@ -25,6 +25,7 @@ int _strcmp(const char *str1, const char *str2);
 void print_env(void);
 int _putchar(char c);
 int i_atoi(char *s);
+char *readUserInput(void);
 
 void execvFunction(const char *lineptr, char *const argv[]);
 char *get_location(char *command);
