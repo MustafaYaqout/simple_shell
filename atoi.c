@@ -14,8 +14,8 @@
 
 int i_atoi(char *s)
 {
-	int result = 0;
-	int negative = 1;
+	int end = 0;
+	int negati = 1;
 
 	while (*s == ' ' || *s == '\t')
 	{
@@ -23,7 +23,7 @@ int i_atoi(char *s)
 	}
 	if (*s == '-')
 	{
-		negative = -1;
+		negati = -1;
 		s++;
 	}
 	else if (*s == '+')
@@ -32,8 +32,8 @@ int i_atoi(char *s)
 	}
 	while (*s >= '0' && *s <= '9')
 	{
-		result = result * 10 + (*s - '0');
+		end = end * 10 + (*s - '0');
 		s++;
 	}
-	return (negative * result);
+	return (negati * end);
 }

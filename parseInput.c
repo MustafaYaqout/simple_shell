@@ -9,7 +9,7 @@
 
 char **parse_cmd(char *input)
 {
-	char **arguments;
+	char **linptr;
 	char *token;
 	int i;
 	int j;
@@ -20,9 +20,9 @@ char **parse_cmd(char *input)
 	if (input == NULL)
 		return (NULL);
 
-	arguments = malloc(sizeof(char *) * buffsize);
+	linptr = malloc(sizeof(char *) * buffsize);
 
-	if (!arguments)
+	if (!linptr)
 	{
 		perror("hsh");
 		return (NULL);
@@ -31,19 +31,19 @@ char **parse_cmd(char *input)
 	token = strtok(input, "\n\t\r\a ");
 	for (i = 0; token; i++)
 	{
-		arguments[i] = duplicateFunction(token);
-		if (!arguments[i])
+		linptr[i] = duplicateFunction(token);
+		if (!linptr[i])
 		{
 			perror("hsh");
 			for (j = 0; j < i; j++)
 			{
-				free(arguments[j]);
+				free(linptr[j]);
 			}
-			free(arguments);
+			free(linptr);
 			return (NULL);
 		}
 		token = strtok(NULL, "\n\t\r\a ");
 	}
-	arguments[i] = NULL;
-	return (arguments);
+	linptr[i] = NULL;
+	return (linptr);
 }
