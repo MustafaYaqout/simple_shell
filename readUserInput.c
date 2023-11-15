@@ -1,13 +1,13 @@
 #include "main.h"
 
 /**
- * readUserInput - Read a line of input from the user.
+ * readUserInput - function that read a line of input from the user.
  *
  * This function reads a line of input from the standard input (stdin).
  * It dynamically allocates memory to store the input string, and it
  * adjusts the string to remove the newline character at the end, if present.
  *
- * @return A dynamically allocated string containing the user's input.
+ * Return: A dynamically allocated string containing the user's input.
  */
 char *readUserInput(void)
 {
