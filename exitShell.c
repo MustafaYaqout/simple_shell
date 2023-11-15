@@ -1,11 +1,14 @@
 #include "main.h"
 
 /**
- * ExitShell - Exit the program with a specified status code.
+ * Exit_Shell - Exits the program with a specified status code.
+ * @arguments: Array of command arguments.
  *
- * This function terminates the program immediately
+ * Terminates the program immediately, converting the second argument
+ * (if present) to an integer using atoi as the exit code. Frees memory
+ * allocated for the arguments and exits the program with the exit code.
  *
- * @param status - The exit status code.
+ * @param arguments: Array of command arguments.
  */
 
 void Exit_Shell(char **arguments)
