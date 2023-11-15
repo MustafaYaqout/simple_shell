@@ -20,7 +20,7 @@ nchars_read = getline(&lineptr, &n, stdin);
 if (nchars_read == -1)
 {
 free(lineptr);
-return (NULL);
+return (0);
 }
 
 if (nchars_read > 0 && lineptr[nchars_read - 1] == '\n')
