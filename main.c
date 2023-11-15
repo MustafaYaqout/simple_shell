@@ -55,6 +55,7 @@ int main(int argc, char *argv[], char *envp[])
 		}
 		free(arguments);
 	}
+
 	free(lineptr);
 	return (0);
 }

@@ -1,11 +1,10 @@
 #include "main.h"
 
 /**
- * HandleError - Display error message, free allocated memory, and exit with
- * failure status.
+ * HandleError - Displays an error message, frees allocated memory, and exits.
  *
- * @param message - The error message to display.
- * @param arguments - The dynamically allocated memory to free.
+ * @param message - Error message to display.
+ * @param arguments - Memory to free.
  */
 
 void HandleError(const char *message, char **arguments)
