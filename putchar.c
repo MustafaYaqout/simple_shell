@@ -8,10 +8,12 @@
  * On error, -1 is returned, and errno is set appropriately.
  */
 
-int _putchar(char c) {
-    if (write(1, &c, 1) == -1) {
-        perror("_putchar");
-        return -1;
-    }
-    return 1;
+int _putchar(char c)
+{
+	if (write(1, &c, 1) == -1)
+	{
+		perror("_putchar");
+		return (-1);
+	}
+	return (1);
 }
